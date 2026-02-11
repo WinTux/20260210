@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+  "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+  "https://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- Configuración de la base de datos -->
+        <property name="hibernate.connection.driver_class">
+            org.postgresql.Driver
+        </property>
+
+        <property name="hibernate.connection.url">
+            jdbc:postgresql://localhost:5432/UniversidadEducomser
+        </property>
+
+        <property name="hibernate.connection.username">
+            postgres
+        </property>
+
+        <property name="hibernate.connection.password">
+            123456ABCxyz
+        </property>
+
+        <!-- Dialecto -->
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.PostgreSQLDialect
+        </property>
+
+        <!-- Mostrar SQL en consola -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- Manejo del schema -->
+        <property name="hibernate.hbm2ddl.auto">none</property>
+
+        <!-- 📦 Entidades -->
+        <mapping class="com.tuempresa.modelo.Usuario"/>
+        <mapping class="com.tuempresa.modelo.Producto"/>
+
+        <!-- Si usás archivos .hbm.xml -->
+        <!-- <mapping resource="mappings/Usuario.hbm.xml"/> -->
+
+    </session-factory>
+
+</hibernate-configuration>
