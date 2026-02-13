@@ -40,6 +40,7 @@
         <!-- Entidades -->
         <mapping class="com.pepe.j.Models.Carrera"/>
         <mapping class="com.pepe.j.Models.Estudiante"/>
+        <mapping class="com.pepe.j.Models.Docente"/>
 
         <!-- Si usás archivos .hbm.xml -->
         <!-- <mapping resource="mappings/Usuario.hbm.xml"/> -->
