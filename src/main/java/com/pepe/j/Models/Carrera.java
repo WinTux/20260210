@@ -1,10 +1,13 @@
 package com.pepe.j.Models;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,6 +18,14 @@ public class Carrera implements Serializable{
 	@Column(name="Nombre", nullable= false)
 	private String Nombre;
 	private String Edificio;
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="carr", targetEntity=Estudiante.class)
+	private Set estudiantes;
+	public Set getEstudiantes() {
+		return estudiantes;
+	}
+	public void setEstudiantes(Set estudiantes) {
+		this.estudiantes = estudiantes;
+	}
 	public int getCarreraID() {
 		return CarreraID;
 	}

@@ -37,9 +37,9 @@
         <!-- Manejo del schema -->
         <property name="hibernate.hbm2ddl.auto">none</property>
 
-        <!-- 📦 Entidades -->
-        <mapping class="com.tuempresa.modelo.Usuario"/>
-        <mapping class="com.tuempresa.modelo.Producto"/>
+        <!-- Entidades -->
+        <mapping class="com.pepe.j.Models.Carrera"/>
+        <mapping class="com.pepe.j.Models.Estudiante"/>
 
         <!-- Si usás archivos .hbm.xml -->
         <!-- <mapping resource="mappings/Usuario.hbm.xml"/> -->
