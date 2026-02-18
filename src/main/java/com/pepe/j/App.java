@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import com.pepe.j.Models.Carrera;
+import com.pepe.j.Models.Docente;
 import com.pepe.j.Models.Estudiante;
 
 public class App {
@@ -15,8 +16,41 @@ public class App {
     
     // Crear una carrera
     //crearCarrera();
-	crearEstudiante();
+	// Crear un estudiante
+	//crearEstudiante();
+	// Crear un docente
+	crearDocente();
   }
+
+  private static void crearDocente() {
+	  System.out.println("*** Conexión a la DDBB ***");
+	  Transaction tx = null;
+	  Session session = HibernateUtil.getSessionFactory().openSession();
+	  System.out.println("*** Creando docente ***");
+	  Docente doc = new Docente();
+	  doc.setNombre("Sofía");
+	  doc.setApellido("Rocha");
+	  doc.setPassword("776655");
+	  doc.setEmail("sofi.doc@universidadeducomser.com");
+	  doc.setSitioWeb("https://github.com/sofisofi");
+	  Carrera carreraDeDoc = null;
+	  try {
+		  tx = session.beginTransaction();
+		  int id = 777;
+		  Query query = session.createQuery("select c from Carrera c where c.CarreraID = :cid");
+		  query.setParameter("cid", id);
+		  carreraDeDoc = (Carrera) query.getSingleResult();
+		  doc.setCarr(carreraDeDoc);
+		  session.persist(doc);
+		  tx.commit();
+	  }catch(HibernateException e) {
+		  e.printStackTrace();
+		  if(tx!=null)
+			  tx.rollback();
+	  }finally {
+		  session.close();
+	  }
+}
 
   private static void crearEstudiante() {
 	  System.out.println("*** Conexión a la DDBB ***");
