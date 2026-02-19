@@ -9,6 +9,7 @@ public class Asignatura {
 	private Integer Creditos;
 	private Carrera carrerita;
 	private Set<Inscripcion> inscripciones;
+	
 	public Set<Inscripcion> getInscripciones() {
 		return inscripciones;
 	}

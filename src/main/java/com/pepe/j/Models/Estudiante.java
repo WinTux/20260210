@@ -1,6 +1,7 @@
 package com.pepe.j.Models;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,6 +26,13 @@ public class Estudiante {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="CarreraID")
 	private Carrera carr;
+	private Set<Inscripcion> inscripciones;
+	public Set<Inscripcion> getInscripciones() {
+		return inscripciones;
+	}
+	public void setInscripciones(Set<Inscripcion> inscripciones) {
+		this.inscripciones = inscripciones;
+	}
 	public int getMatricula() {
 		return Matricula;
 	}

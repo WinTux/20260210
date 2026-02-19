@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "https://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping schema="pregrado">
+	<class name="com.pepe.j.Models.Inscripcion" table="Inscripcion">
+		<id name="InscripcionID" type="int" column="Sigla" length="6">
+			<generator class="Identity" />
+		</id>
+		<property name="FechaInscripcion" type="localDate" column="FechaInscripcion"/>
+		<property name="Calificacion" type="big_decimal" column="Calificacion" precision="3" scale="2"/>
+		<many-to-one name="asig" class="com.pepe.j.Models.Asignatura" column="AsignaturaID"/>
+		<many-to-one name="est" class="com.pepe.j.Models.Estudiante" column="EstudianteID"/>
+	</class>
+</hibernate-mapping>
