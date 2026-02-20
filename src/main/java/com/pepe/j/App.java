@@ -2,6 +2,9 @@ package com.pepe.j;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -26,8 +29,37 @@ public class App {
 	// Crear una asignatura
 	//crearAsignatura();
 	// Crear una inscripcion
-	crearInscripcion();
+	//crearInscripcion();
+	  
+    // Para obtener estudiantes
+	obtenerEstudiantes();
   }
+
+  private static void obtenerEstudiantes() {
+	  System.out.println("*** Conexión a la DDBB ***");
+	  Transaction tx = null;
+	  Session session = HibernateUtil.getSessionFactory().openSession();
+	  System.out.println("*** obteniendo estudiante ***");
+	  List<Estudiante> estudiantes = new LinkedList<Estudiante>();
+	  try {
+		  tx = session.beginTransaction();
+		  String hql = "FROM com.pepe.j.Models.Estudiante";
+		  estudiantes = session.createQuery(hql, Estudiante.class).list();
+		  tx.commit();
+	  }catch(HibernateException e) {
+		  e.printStackTrace();
+		  if(tx!=null)
+			  tx.rollback();
+	  }finally {
+		  session.close();
+	  }
+	  
+	  for(Iterator iterador = estudiantes.iterator(); iterador.hasNext();) {
+		  Estudiante e = (Estudiante) iterador.next();
+		  System.out.println("Matricula: "+ e.getMatricula());
+		  System.out.println("Apellido: "+ e.getApellido());
+	  }
+}
 
   private static void crearInscripcion() {
 	  System.out.println("*** Conexión a la DDBB ***");
