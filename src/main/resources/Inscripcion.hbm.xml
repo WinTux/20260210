@@ -4,7 +4,7 @@
   "https://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping schema="pregrado">
 	<class name="com.pepe.j.Models.Inscripcion" table="Inscripcion">
-		<id name="InscripcionID" type="int" column="Sigla" length="6">
+		<id name="InscripcionID" type="int" column="InscripcionID" length="6">
 			<generator class="identity" />
 		</id>
 		<property name="FechaInscripcion" type="java.time.LocalDate" column="FechaInscripcion"/>
