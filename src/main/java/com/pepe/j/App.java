@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import com.pepe.j.Models.Asignatura;
 import com.pepe.j.Models.Carrera;
 import com.pepe.j.Models.Docente;
 import com.pepe.j.Models.Estudiante;
@@ -19,8 +20,39 @@ public class App {
 	// Crear un estudiante
 	//crearEstudiante();
 	// Crear un docente
-	crearDocente();
+	//crearDocente();
+	// Crear una asignatura
+	crearAsignatura();
   }
+
+  private static void crearAsignatura() {
+	  System.out.println("*** Conexión a la DDBB ***");
+	  Transaction tx = null;
+	  Session session = HibernateUtil.getSessionFactory().openSession();
+	  System.out.println("*** Creando asignatura ***");
+	  Asignatura asig = new Asignatura();
+	  asig.setSigla("INF131");
+	  asig.setDescripcion("Se ver estructuras típicas para lenguajes POO");
+	  asig.setTitulo("Estructuras de datos");
+	  asig.setCreditos(20);
+	  Carrera carreraDeAsig = null;
+	  try {
+		  tx = session.beginTransaction();
+		  int id = 777;
+		  Query query = session.createQuery("select c from Carrera c where c.CarreraID = :cid");
+		  query.setParameter("cid", id);
+		  carreraDeAsig = (Carrera) query.getSingleResult();
+		  asig.setCarrerita(carreraDeAsig);
+		  session.persist(asig);
+		  tx.commit();
+	  }catch(HibernateException e) {
+		  e.printStackTrace();
+		  if(tx!=null)
+			  tx.rollback();
+	  }finally {
+		  session.close();
+	  }
+}
 
   private static void crearDocente() {
 	  System.out.println("*** Conexión a la DDBB ***");

@@ -9,6 +9,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,6 +27,7 @@ public class Estudiante {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="CarreraID")
 	private Carrera carr;
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="est", targetEntity=Inscripcion.class)
 	private Set<Inscripcion> inscripciones;
 	public Set<Inscripcion> getInscripciones() {
 		return inscripciones;

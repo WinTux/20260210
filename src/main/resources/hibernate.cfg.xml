@@ -42,8 +42,8 @@
         <mapping class="com.pepe.j.Models.Estudiante"/>
         <mapping class="com.pepe.j.Models.Docente"/>
 
-        <mapping resource="mappings/Asignatura.hbm.xml"/>
-        <mapping resource="mappings/Inscripcion.hbm.xml"/>
+        <mapping resource="Asignatura.hbm.xml"/>
+        <mapping resource="Inscripcion.hbm.xml"/>
 
     </session-factory>
 

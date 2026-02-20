@@ -5,9 +5,9 @@
 <hibernate-mapping schema="pregrado">
 	<class name="com.pepe.j.Models.Inscripcion" table="Inscripcion">
 		<id name="InscripcionID" type="int" column="Sigla" length="6">
-			<generator class="Identity" />
+			<generator class="identity" />
 		</id>
-		<property name="FechaInscripcion" type="localDate" column="FechaInscripcion"/>
+		<property name="FechaInscripcion" type="java.time.LocalDate" column="FechaInscripcion"/>
 		<property name="Calificacion" type="big_decimal" column="Calificacion" precision="3" scale="2"/>
 		<many-to-one name="asig" class="com.pepe.j.Models.Asignatura" column="AsignaturaID"/>
 		<many-to-one name="est" class="com.pepe.j.Models.Estudiante" column="EstudianteID"/>
