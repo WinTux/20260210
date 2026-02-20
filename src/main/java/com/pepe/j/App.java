@@ -22,8 +22,15 @@ public class App {
 	// Crear un docente
 	//crearDocente();
 	// Crear una asignatura
-	crearAsignatura();
+	//crearAsignatura();
+	// Crear una inscripcion
+	crearInscripcion();
   }
+
+  private static void crearInscripcion() {
+	// TODO Auto-generated method stub
+	
+}
 
   private static void crearAsignatura() {
 	  System.out.println("*** Conexión a la DDBB ***");
